@@ -1,0 +1,3 @@
+D:/PROJECT/buildbuild/CMakeFiles/trash.dir
+D:/PROJECT/buildbuild/CMakeFiles/ALL_BUILD.dir
+D:/PROJECT/buildbuild/CMakeFiles/ZERO_CHECK.dir

@@ -1,0 +1,6 @@
+﻿  example.cpp
+D:\PROJECT\example.cpp(572,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "big_t"
+D:\PROJECT\example.cpp(572,12): message : рекомендуется использовать "%lld" в строке форматирования
+D:\PROJECT\example.cpp(572,12): message : рекомендуется использовать "%Id" в строке форматирования
+D:\PROJECT\example.cpp(572,12): message : рекомендуется использовать "%I64d" в строке форматирования
+LINK : fatal error LNK1104: не удается открыть файл "zlibd.lib"

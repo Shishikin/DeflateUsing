@@ -1,0 +1,8 @@
+D:/PROJECT/build/CMakeFiles/zlib.dir
+D:/PROJECT/build/CMakeFiles/zlibstatic.dir
+D:/PROJECT/build/CMakeFiles/example.dir
+D:/PROJECT/build/CMakeFiles/minigzip.dir
+D:/PROJECT/build/CMakeFiles/RUN_TESTS.dir
+D:/PROJECT/build/CMakeFiles/INSTALL.dir
+D:/PROJECT/build/CMakeFiles/ALL_BUILD.dir
+D:/PROJECT/build/CMakeFiles/ZERO_CHECK.dir
