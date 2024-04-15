@@ -1,0 +1,7 @@
+D:/zlibmisha/lib/zlib.lib
+D:/zlibmisha/bin/zlib.dll
+D:/zlibmisha/lib/zlibstatic.lib
+D:/zlibmisha/include/zconf.h
+D:/zlibmisha/include/zlib.h
+D:/zlibmisha/share/man/man3/zlib.3
+D:/zlibmisha/share/pkgconfig/zlib.pc
