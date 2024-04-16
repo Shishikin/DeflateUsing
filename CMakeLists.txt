@@ -1,5 +1,5 @@
 ﻿project(trash)
 add_executable(trash example.cpp)
-target_link_directories(trash PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_include_directories(trash PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_directories(trash PUBLIC "D:/Zlib/lib")
+target_include_directories(trash PUBLIC "D:/Zlib/include")
 target_link_libraries(trash zlib)

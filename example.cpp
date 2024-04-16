@@ -58,6 +58,8 @@
 
 #define local static
 
+typedef   int deflateendsig (z_streamp );
+
      /* print nastygram and leave */
 local void quit(char* why)
 {
@@ -120,18 +122,26 @@ local int recompress(z_streamp inf, z_streamp def)
     return ret;
 }
 
+#include <Windows.h>
+
 #define EXCESS 256      /* empirically determined stream overage */
 #define MARGIN 8        /* amount to back off for completion */
 
 /* compress from stdin to fixed-size block on stdout */
 int main(int argc, char** argv)
 {
-    int ret;                /* return code */
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    int ret = 0;                /* return code */
     unsigned size;          /* requested fixed output block size */
     unsigned have;          /* bytes written by deflate() call */
     unsigned char* blk;     /* intermediate and final stream */
     unsigned char* tmp;     /* close to desired size stream */
     z_stream def, inf;      /* zlib deflate and inflate states */
+
+    assert(ret != Z_STREAM_ERROR);
+    HMODULE ZLDLL = LoadLibrary("zlib.dll");
+    auto DEFLATEENDADD = GetProcAddress(ZLDLL, "deflateEnd");
 
     /* get requested output size */
     if (argc != 2)
@@ -155,7 +165,13 @@ int main(int argc, char** argv)
     /* compress from stdin until output full, or no more input */
     def.avail_out = size + EXCESS;
     def.next_out = blk;
-    ret = partcompress(stdin, &def);
+    FILE* file = fopen("data.txt", "rb");
+    if (file == NULL)
+    {
+        perror("Error opening file");
+        return 1;
+    }
+    ret = partcompress(file, &def);
     if (ret == Z_ERRNO)
         quit("error reading input");
 
@@ -222,7 +238,7 @@ int main(int argc, char** argv)
     /* clean up and print results to stderr */
     free(tmp);
     ret = inflateEnd(&inf);
-    assert(ret != Z_STREAM_ERROR);
+    
     ret = deflateEnd(&def);
     assert(ret != Z_STREAM_ERROR);
     free(blk);
