@@ -11,7 +11,6 @@
   
   -- Selecting Windows SDK version 10.0.22000.0 to target Windows 10.0.22621.
   CMake Warning (dev) in CMakeLists.txt:
-  -- Configuring done (0.1s)
     No cmake_minimum_required command is present.  A line of code such as
   
       cmake_minimum_required(VERSION 3.29)
@@ -21,5 +20,6 @@
     information run "cmake --help-policy CMP0000".
   This warning is for project developers.  Use -Wno-dev to suppress it.
   
+  -- Configuring done (0.1s)
   -- Generating done (0.0s)
   -- Build files have been written to: D:/PROJECT/buildbuild

@@ -1,5 +1,5 @@
 ﻿project(trash)
 add_executable(trash example.cpp)
-# target_link_directories(trash PUBLIC "D:/Zlib/lib")
+#target_link_directories(trash PUBLIC "D:/Zlib/lib")
  target_include_directories(trash PUBLIC "D:/Zlib/include")
 # target_link_libraries(trash zlib)
