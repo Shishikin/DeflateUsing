@@ -1,0 +1,10 @@
+^D:\PROJECT\BUILDBUILD\CMAKEFILES\0EB8A1F4C327FDD63B6D4B2AA10A97CF\GENERATE.STAMP.RULE
+setlocal
+D:\downloads\cmake-3.29.1-windows-x86_64\cmake-3.29.1-windows-x86_64\bin\cmake.exe -SD:/PROJECT -BD:/PROJECT/buildbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/PROJECT/buildbuild/trash.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

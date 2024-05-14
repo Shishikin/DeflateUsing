@@ -1,4 +1,11 @@
 ﻿  example.cpp
-D:\PROJECT\example.cpp(80,30): warning C4267: =: преобразование из "size_t" в "uInt"; возможна потеря данных
-D:\PROJECT\example.cpp(166,18): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  trash.vcxproj -> D:\PROJECT\buildbuild\Debug\trash.exe
+D:\PROJECT\example.cpp(86,30): warning C4267: =: преобразование из "size_t" в "uInt"; возможна потеря данных
+D:\PROJECT\example.cpp(175,18): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+example.obj : error LNK2019: ссылка на неразрешенный внешний символ deflate в функции "int __cdecl partcompress(struct _iobuf *,struct z_stream_s *)" (?partcompress@@YAHPEAU_iobuf@@PEAUz_stream_s@@@Z).
+example.obj : error LNK2019: ссылка на неразрешенный внешний символ inflate в функции "int __cdecl recompress(struct z_stream_s *,struct z_stream_s *)" (?recompress@@YAHPEAUz_stream_s@@0@Z).
+example.obj : error LNK2019: ссылка на неразрешенный внешний символ inflateEnd в функции main.
+example.obj : error LNK2019: ссылка на неразрешенный внешний символ deflateReset в функции main.
+example.obj : error LNK2019: ссылка на неразрешенный внешний символ inflateReset в функции main.
+example.obj : error LNK2019: ссылка на неразрешенный внешний символ deflateInit_ в функции main.
+example.obj : error LNK2019: ссылка на неразрешенный внешний символ inflateInit_ в функции main.
+D:\PROJECT\buildbuild\Debug\trash.exe : fatal error LNK1120: неразрешенных внешних элементов: 7

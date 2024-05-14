@@ -1,0 +1,6 @@
+﻿  Building Custom Rule D:/PROJECT/CMakeLists.txt
+  example.cpp
+D:\PROJECT\example.cpp(82,30): warning C4267: =: преобразование из "size_t" в "uInt"; возможна потеря данных
+D:\PROJECT\example.cpp(171,18): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\PROJECT\example.cpp(181,21): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  trash.vcxproj -> D:\PROJECT\buildbuild\Release\trash.exe

@@ -56,6 +56,10 @@
 #include <assert.h>
 #include "zlib.h"
 
+
+typedef int (*deflateEndCAll) (z_streamp);
+
+
 #define local static
 
 typedef   int deflateendsig (z_streamp );
@@ -132,6 +136,7 @@ int main(int argc, char** argv)
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+
     int ret = 0;                /* return code */
     unsigned size;          /* requested fixed output block size */
     unsigned have;          /* bytes written by deflate() call */
@@ -140,8 +145,10 @@ int main(int argc, char** argv)
     z_stream def, inf;      /* zlib deflate and inflate states */
 
     assert(ret != Z_STREAM_ERROR);
+    
     HMODULE ZLDLL = LoadLibrary("zlib.dll");
     auto DEFLATEENDADD = GetProcAddress(ZLDLL, "deflateEnd");
+   
 
     /* get requested output size */
     if (argc != 2)
@@ -161,7 +168,7 @@ int main(int argc, char** argv)
     ret = deflateInit(&def, Z_DEFAULT_COMPRESSION);
     if (ret != Z_OK || blk == NULL)
         quit("out of memory");
-
+   
     /* compress from stdin until output full, or no more input */
     def.avail_out = size + EXCESS;
     def.next_out = blk;
@@ -175,23 +182,26 @@ int main(int argc, char** argv)
     if (ret == Z_ERRNO)
         quit("error reading input");
 
+    //FILE* writing = fopen("output1.txt", "wb");
     /* if it all fit, then size was undersubscribed -- done! */
     if (ret == Z_STREAM_END && def.avail_out >= EXCESS) {
         /* write block to stdout */
-        have = size + EXCESS - def.avail_out;
+        have = size + EXCESS - def.avail_out;        
         if (fwrite(blk, 1, have, stdout) != have || ferror(stdout))
             quit("error writing output");
-
+ //       if (fwrite(blk, 1, have, writing) != have || ferror(stdout))
+ //           quit("error writing output");
         /* clean up and print results to stderr */
-        ret = deflateEnd(&def);
+        ret = deflateEndCAll(DEFLATEENDADD)(&def);
         assert(ret != Z_STREAM_ERROR);
         free(blk);
         fprintf(stderr,
             "%u bytes unused out of %u requested (all input)\n",
             size - have, size);
+        
         return 0;
     }
-
+    
     /* it didn't all fit -- set up for recompression */
     inf.zalloc = Z_NULL;
     inf.zfree = Z_NULL;
@@ -239,11 +249,13 @@ int main(int argc, char** argv)
     free(tmp);
     ret = inflateEnd(&inf);
     
-    ret = deflateEnd(&def);
+    ret = deflateEndCAll(DEFLATEENDADD)(&def);
     assert(ret != Z_STREAM_ERROR);
     free(blk);
     fprintf(stderr,
         "%u bytes unused out of %u requested (%lu input)\n",
         size - have, size, def.total_in);
+    
+
     return 0;
 }
